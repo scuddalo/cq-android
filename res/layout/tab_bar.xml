@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/transparent_panel" android:layout_width="fill_parent"
+	android:background="@drawable/cq_tab_bar_bg"
+	android:layout_centerHorizontal="true"
+	android:layout_alignParentBottom="true" android:gravity="center"
+	android:layout_height="90dp">
+
+	<ImageButton android:id="@+id/msgBtn" android:src="@drawable/cq_inbox_btnx"
+		android:background="@null" android:layout_gravity="bottom|left"
+		style="@style/TabbarOuterButton">
+	</ImageButton>
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_weight="1"
+		android:gravity="center_horizontal">
+		<ImageButton android:id="@+id/seekBtn" android:src="@drawable/cq_seek_btnx"
+			android:background="@null" android:layout_gravity="bottom|center_horizontal"
+			android:scaleType="center" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+		</ImageButton>
+	</LinearLayout>
+	<ImageButton android:id="@+id/addToTiersBtn" android:src="@drawable/cq_tiers_btnx"
+		android:background="@null" android:layout_gravity="right|bottom"
+		style="@style/TabbarOuterButton">
+	</ImageButton>
+</LinearLayout>

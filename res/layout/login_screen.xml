@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@drawable/cq_bg">
+
+	<RelativeLayout android:id="@+id/SigninTabContainer"
+		android:layout_marginLeft="4dp" android:layout_marginRight="4dp"
+		android:background="@drawable/cq_sign_in_tabbed_bg"
+		android:layout_width="fill_parent" android:layout_marginTop="60dp"
+		android:layout_height="150dp">
+		<LinearLayout android:id="@+id/SignupBtnLayout"
+			android:layout_alignParentRight="true" android:layout_marginRight="5dp"
+			android:layout_width="80dp" android:layout_height="30dp">
+			<TextView android:id="@+id/SignUpText" android:layout_width="wrap_content"
+				android:text="Sign Up" android:textStyle="bold" android:textColor="#ffffff"
+				android:layout_gravity="right|center_vertical"
+				android:layout_height="wrap_content">
+			</TextView>
+
+			<ImageButton android:id="@+id/SignUpBtn"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:src="@drawable/cq_sign_in_white_arrow" android:background="@null"
+				android:layout_gravity="center_vertical">
+			</ImageButton>
+		</LinearLayout>
+
+		<LinearLayout android:id="@+id/UsernameLayout"
+			android:layout_width="fill_parent" android:layout_height="50dp"
+			android:layout_below="@+id/SignupBtnLayout"
+			android:layout_marginLeft="4dp" android:layout_marginRight="4dp"
+			android:background="@drawable/cq_input_field_bg"
+			android:layout_marginTop="8dp" android:paddingRight="5dp">
+			<TextView android:text="Username" android:id="@+id/lblUsername"
+				style="@style/LabelText">
+			</TextView>
+			<EditText android:id="@+id/txtUsername"
+				android:layout_height="40dp" android:lines="1" android:layout_width="fill_parent"
+				android:layout_gravity="center_vertical" android:textColor="#000"
+				android:hint="SeekYou Username" android:textColorHint="#cecece"
+				android:background="@drawable/white" android:layout_marginTop="2dp"
+				android:nextFocusDown="@+id/txtPassword" android:textSize="18dp" android:paddingBottom="2dp" android:paddingLeft="10dp">
+			</EditText>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/PasswordLayout"
+			android:layout_width="fill_parent" android:layout_height="50dp"
+			android:layout_marginLeft="2dp" android:layout_marginRight="2dp"
+			android:layout_below="@+id/UsernameLayout" android:background="@drawable/cq_input_field_bg"
+			android:layout_marginTop="8dp" android:paddingRight="5dp">
+			<TextView android:text="Password" android:id="@+id/lblPassword"
+				style="@style/LabelText">
+			</TextView>
+			<EditText android:id="@+id/txtPassword"
+				android:layout_height="40dp" android:lines="1" android:layout_width="fill_parent"
+				android:layout_gravity="center_vertical" android:textSize="18dp"
+				android:textColorHint="#cecece" android:password="true"
+				android:textColor="#000" android:hint="SeekYou Password"
+				android:background="@drawable/white" android:layout_marginTop="2dp"
+				android:nextFocusDown="@+id/btnSign" android:paddingBottom="2dp" android:paddingLeft="10dp">
+			</EditText>
+		</LinearLayout>
+
+	</RelativeLayout>
+
+	<LinearLayout android:id="@+id/buttonContainer"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/SigninTabContainer" android:background="@drawable/empty"
+		android:gravity="right">
+		<ImageButton android:id="@+id/btnSign" android:src="@drawable/cq_sign_in"
+			android:background="@null" android:scaleType="fitXY"
+			android:layout_height="90dp" android:layout_width="90dp">
+		</ImageButton>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/LogoContainer"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/buttonContainer" android:gravity="center_horizontal|center_vertical"
+		android:layout_alignParentBottom="true">
+		<ImageView android:src="@drawable/cq_logo"
+			android:layout_height="100dp" android:layout_width="170dp"
+			android:scaleType="fitXY" android:layout_gravity="bottom"></ImageView>
+	</LinearLayout>
+
+
+
+</RelativeLayout>
+
+<!-- <Button android:id="@+id/btnSign" android:padding="10dp" android:text="Sign 
+	In" android:layout_centerInParent="false" android:layout_height="wrap_content" 
+	android:layout_width="wrap_content" android:background="@drawable/empty" 
+	android:textColor="@drawable/android_yellow"/> -->

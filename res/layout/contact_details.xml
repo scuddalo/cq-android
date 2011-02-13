@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content">
+	<include layout="@layout/title_bar" 
+		android:layout_alignParentTop="true" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		/>
+	<LinearLayout android:id="@+id/cdFirstRow"
+		style = "@style/ContactDetailsRow"
+		android:background="@drawable/cq_box_bg_top"
+		android:layout_below="@+id/title_bar"
+		android:layout_height="70dp">
+		<ImageView android:id="@+id/cdPhoto" android:layout_width="50dp"
+			android:layout_height="60dp" android:layout_marginLeft="5dp"
+			android:scaleType="fitXY" android:src="@drawable/default_photo"></ImageView>
+		<TextView android:id="@+id/cdName" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="Santoash Rajaram"
+			android:textColor="#000000" android:textSize="18dp"
+			android:layout_marginLeft="10dp" android:layout_weight="0.5"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/cdSecondRow"
+		style = "@style/ContactDetailsRow"
+		android:layout_below="@+id/cdFirstRow">
+		<TextView android:id="@+id/cdPhoneLabel"
+			style="@style/ContactDetailHeaderCol" 
+			android:text="Phone"
+			android:textColor="#009ACD" android:textSize="14dp"
+			android:layout_marginLeft="20dp"></TextView>
+			
+		<TextView android:id="@+id/cdPhoneText" android:hint="1-412-559-6480"
+			style = "@style/ContactDetailsDetailCol"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/cdThirdRow"
+		style = "@style/ContactDetailsRow"
+		android:layout_below="@+id/cdSecondRow">
+		<TextView android:id="@+id/cdEmailLabel"  android:text="Email"
+			style = "@style/ContactDetailHeaderCol"
+			></TextView>
+		<TextView android:id="@+id/cdEmailText" 
+			android:hint = "santoash@gmail.com"
+			style = "@style/ContactDetailsDetailCol"
+		></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/cdFourthRow"
+		style = "@style/ContactDetailsRow"
+		android:layout_below="@+id/cdThirdRow">
+		<TextView android:id="@+id/cdLocationLabel"  android:text="Location"
+			style = "@style/ContactDetailHeaderCol"
+			></TextView>
+		<TextView android:id="@+id/cdLocationText" 
+			android:hint = "555 Central Ave, Alameda, CA 94501"
+			style = "@style/ContactDetailsDetailCol"
+		></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/cdLastRow"
+		style = "@style/ContactDetailsRow"
+		android:background="@drawable/cq_box_bg_bottom_2"
+		android:layout_below="@+id/cdFourthRow" android:layout_height="70dp" android:gravity="center_horizontal|center_vertical">
+		<LinearLayout android:layout_width="wrap_content" android:layout_height = "wrap_content">
+		<ImageButton android:id="@+id/cdSeekBtn"
+				android:src="@drawable/cq_seek_circle_btnx" android:background="@null"
+				android:scaleType="fitXY"
+				android:layout_height="40dp" android:layout_width="40dp" android:layout_marginRight="40dp">
+			</ImageButton>
+			<ImageButton android:id="@+id/cdAddToTierBtn"
+				android:src="@drawable/cq_add_to_tiers_btn" android:background="@null"
+				android:scaleType="fitXY"
+				android:layout_height="40dp" android:layout_width="35dp" android:layout_marginLeft="40dp">
+			</ImageButton>
+		</LinearLayout>
+	</LinearLayout>
+	<include layout="@layout/tab_bar" android:layout_alignParentBottom="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="90dp" />
+</RelativeLayout>

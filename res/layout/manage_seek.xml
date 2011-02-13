@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:background="@drawable/cq_bg">
+
+		<include layout="@layout/title_bar"
+		android:layout_alignParentTop="true" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	  
+	<TextView 
+		android:text="Active Seek " 
+		android:id="@+id/ManageSeek_Header" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_below = "@+id/title_bar"
+        android:textColor="#ffffff" 
+        android:textStyle="bold"
+        android:paddingLeft = "5dp"
+        android:layout_marginTop = "5dp"
+        android:layout_marginBottom = "5dp"
+        android:textSize="12dp">
+	</TextView>
+	
+	
+	<LinearLayout android:id="@+id/ManageSeek_MesssageBodyContainer"
+		android:layout_width = "fill_parent"
+		android:layout_height = "wrap_content"
+		android:background = "@drawable/cq_box_bg_full9"
+		android:gravity = "left"
+		android:layout_below = "@+id/ManageSeek_Header"
+		android:orientation = "vertical"
+		android:isScrollContainer="true"
+		android:padding="20dp" android:scrollbarSize="1dp" android:scrollbars="vertical">
+		<TextView android:id="@+id/ManageSeek_MsgHeaderTxt"			
+			android:text = "Message:"
+			android:layout_height = "wrap_content"
+			android:layout_width = "wrap_content"
+			android:layout_gravity = "left"
+			android:textStyle = "italic"
+			style = "@style/BlackDisplayText"
+		/>
+		<ScrollView android:id="@+id/ManageSeek_MessageBodyScroller"
+			android:layout_width = "fill_parent"
+			android:layout_height = "wrap_content"
+		>	
+			<TextView android:id="@+id/ManageSeek_MessageBodyTxt"
+				android:layout_height = "wrap_content" 
+				android:layout_width = "fill_parent"
+				android:layout_marginTop = "5dp"
+				android:minLines = "2"
+				android:maxLines = "5"
+				style = "@style/BlackDisplayText"
+			android:scrollbars="vertical"/>
+		</ScrollView>
+	
+</LinearLayout>
+    <LinearLayout 
+    	android:id="@+id/ManageSeek_ListActivityHeader" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="40dp"
+    	android:paddingLeft = "15dp"
+    	android:layout_below = "@+id/ManageSeek_MesssageBodyContainer"
+    	android:background = "@drawable/cq_box_bg_top">
+    	<TextView 
+			android:text = "Outstanding Seeks:"
+			android:layout_height = "wrap_content"
+			android:layout_width = "wrap_content"
+			android:layout_gravity = "left|center_vertical"
+			style = "@style/LabelText"
+		/>
+    </LinearLayout>           	
+     <ListView android:id="@id/android:list"
+               android:layout_width="fill_parent" 
+               android:layout_height="wrap_content"
+               android:layout_below = "@+id/ManageSeek_ListActivityHeader"
+               android:layout_above = "@+id/transparent_panel"
+               android:drawSelectorOnTop="false" 
+               android:divider = "@null"
+               android:scrollbarStyle="outsideOverlay"/>
+	
+	
+	<!--  RelativeLayout 
+     		  android:id = "@+id/ManageSeek_ButtonContainer"
+     		  android:gravity = "bottom"  
+     		  android:layout_width="wrap_content" 
+     		  android:layout_height = "wrap_content" 
+     		  android:layout_centerHorizontal = "true"
+     		  android:layout_alignParentBottom = "true"
+     		  >
+     		  
+     		 <Button android:id = "@+id/ManageSeek_NewSeek"
+     		  		android:layout_width = "wrap_content"
+	     			android:layout_height = "wrap_content"
+	     			android:text = "New Seek" android:padding="10dp"  
+	     			android:background="@drawable/empty" 
+	     			android:textColor="@drawable/android_yellow"
+	     			android:typeface="sans" 
+	     			android:textSize="12px"/>
+	     			
+	     	<Button android:id = "@+id/ManageSeek_Locations"
+     		  		android:layout_width = "wrap_content"
+	     			android:layout_height = "wrap_content"
+	     			android:layout_toRightOf = "@+id/ManageSeek_NewSeek"
+	     			android:text = "Locations"  
+	     			android:textSize="12px"
+	     			android:padding="10dp"  
+	     			android:background="@drawable/empty" 
+	     			android:textColor="@drawable/android_yellow"
+	     			android:typeface="sans" 
+	     			/>
+	     			
+	     	<Button android:id = "@+id/ManageSeek_DoneBtn"
+     		  		android:layout_width = "wrap_content"
+	     			android:layout_height = "wrap_content"
+	     			android:layout_toRightOf = "@+id/ManageSeek_Locations"
+	     			android:text = "Done"  
+	     			android:textSize="12px"
+	     			android:padding="10dp"  
+	     			android:background="@drawable/empty" 
+	     			android:textColor="@drawable/android_yellow"
+	     			android:typeface="sans" 
+	     			/>
+    </RelativeLayout -->
+    <include android:layout_alignParentBottom="true" android:layout_width="fill_parent" 
+		android:layout_height="90dp" layout="@layout/tab_bar"></include>
+</RelativeLayout>

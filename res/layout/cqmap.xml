@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:background="@drawable/cq_title_bar_bgx">
+<ImageView android:src = "@drawable/cq_title_bar_logo" android:layout_gravity="center_horizontal|center_vertical"></ImageView>
+</LinearLayout>
+
+<RelativeLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout02" android:layout_below="@+id/LinearLayout01" android:layout_width="wrap_content" android:background="@drawable/cq_status_bgx">
+	<EditText android:text="status" android:layout_width="wrap_content" android:layout_height = "wrap_content"></EditText>
+</RelativeLayout>
+	<com.google.android.maps.MapView 
+     	android:id="@+id/mapView2" 
+     	android:layout_width="fill_parent" 
+     	android:layout_height="wrap_content"
+     	android:enabled="true" 
+     	android:clickable="true" 
+     	android:apiKey="09fCY1ADkhzEmQI4FNmtBA4lm3CRq0YwTiWaWLw" 
+     					
+     	/>
+     	
+<LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout03" android:layout_below="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_alignParentBottom="true" android:background="@drawable/cq_tab_bar_bg"></LinearLayout>
+</RelativeLayout>

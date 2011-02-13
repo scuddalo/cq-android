@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/title_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:background = "@drawable/cq_title_bar__orig_bg"
+  android:layout_alignParentTop = "true" 
+  android:layout_height="wrap_content" 
+  android:layout_marginTop="-4dp">
+  
+  	 
+	  <ImageButton android:id="@+id/homeBtn"
+	  	android:src = "@drawable/cq_home_btnx"
+	  	style="@style/TitlebarOuterButton"
+	  	android:layout_gravity="left|center_vertical">
+	  </ImageButton>
+	  <ImageView 
+	  	android:src = "@drawable/cq_title_bar_logo"
+	  	android:layout_height = "wrap_content" android:layout_weight = "1"
+	  	android:layout_width = "wrap_content" android:layout_gravity="center_vertical|center_horizontal">
+	  </ImageView>
+	  <ImageButton android:id="@+id/prefBtn"
+	  	android:src = "@drawable/cq_pref_btnx"
+	  	style="@style/TitlebarOuterButton"
+	  	android:layout_gravity="right|center_vertical">
+	  </ImageButton>
+</LinearLayout>
+	

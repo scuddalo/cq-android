@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/mapPopupExpandModeContainer"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<LinearLayout android:layout_width="200dp"
+		android:background="@drawable/cq_map_popup_expanded_bg"
+		android:layout_height="500dp" android:orientation="vertical"
+		android:paddingLeft="5dp" android:paddingRight="5dp">
+		<LinearLayout android:id="@+id/mapPopupExpandedLayout1"
+			android:layout_width="fill_parent" android:layout_height="40dp"
+			android:layout_gravity="top" android:orientation="horizontal">
+			<ImageView android:id="@+id/mapPopupExpandedPhoto"
+				android:src="@drawable/cq_silhouette" android:layout_weight="0"
+				android:layout_height="40dp" android:scaleType="fitXY"
+				android:layout_gravity="top" android:layout_width="35dp"
+				android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+			</ImageView>
+			<TextView android:id="@+id/mapPopupExpandedDistanceTxt"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:text="1.2 kms" android:layout_weight="1" android:textColor="#c0c0c0"
+				android:textSize="12dp" />
+			<ImageButton android:id="@+id/mapPopupExpandedCollapseButton"
+				android:src="@drawable/cq_down_arrow_btnx" android:background="@null"
+				android:layout_weight="0" android:scaleType="fitXY"
+				android:layout_height="30dp" android:layout_width="30dp"
+				android:layout_gravity="left" />
+		</LinearLayout>
+		<TextView android:id="@+id/mapPopupExpandedStatusTxt"
+			android:layout_height="55dp" android:text="available for a cup of coffee?"
+			android:textSize="12dp" android:textStyle="italic"
+			android:layout_width="wrap_content" android:layout_gravity="center_vertical|center_horizontal">
+		</TextView>
+		<LinearLayout android:id="@+id/mapPopupExpandedButtonContainer"
+			android:orientation="horizontal" android:layout_width="wrap_content"
+			android:layout_gravity="bottom|center_horizontal"
+			android:layout_height="wrap_content">
+			<ImageButton android:id="@+id/mapPopupExpandedSeekBtn2"
+				android:src="@drawable/cq_seek_circle_btn" android:background="@null"
+				android:layout_weight="0.5" android:scaleType="fitXY"
+				android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+				android:layout_height="40dp" android:layout_width="40dp">
+			</ImageButton>
+			<ImageButton android:id="@+id/mapPopupExpandedAddToTierBtn2"
+				android:src="@drawable/cq_add_to_tiers_btn" android:background="@null"
+				android:layout_weight="0.5" android:scaleType="fitXY"
+				android:layout_height="40dp" android:layout_width="35dp"
+				android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+			</ImageButton>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

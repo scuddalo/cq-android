@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background = "@drawable/cq_bg">
+  
+  		<include layout="@layout/title_bar"
+		android:layout_alignParentTop="true" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	  
+  
+  	<LinearLayout android:id="@+id/message_body_container"
+		android:layout_width = "fill_parent"
+		android:background = "@drawable/cq_box_bg_full9"
+		android:gravity = "left"
+		android:layout_below = "@+id/title_bar"
+		android:orientation = "vertical"
+		android:isScrollContainer="true"
+		android:paddingLeft="20dp"
+		android:paddingRight="20dp"
+		android:paddingTop="20dp" 
+		android:scrollbarSize="1dp" 
+		android:scrollbars="vertical" android:layout_height="wrap_content">
+		<TextView
+			android:id="@+id/message_header_txt" 
+			android:text = "santoash says ..."
+			android:layout_height = "wrap_content"
+			android:layout_gravity = "left"
+			android:drawableLeft = "@drawable/cq_silhouette_20x27"
+			android:textStyle = "italic"
+			android:layout_width = "wrap_content"
+			android:paddingBottom = "5dp"
+			style = "@style/LabelText"
+		/>
+		<ScrollView android:id="@+id/Message_MessageBodyScroller"
+			android:layout_width = "fill_parent"
+			android:layout_height = "wrap_content"
+		>	
+			<TextView android:id="@+id/Message_MessageBodyTxt"
+				android:layout_height = "wrap_content" 
+				android:layout_width = "fill_parent"
+				android:text = "@string/lorem_ipsum"
+				android:layout_marginTop = "5dp"
+				style = "@style/BlackDisplayText"
+			android:scrollbars="vertical" android:maxLines="10" android:minLines="2"/>
+		</ScrollView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/message_button_container"
+		android:layout_width = "fill_parent"
+		android:layout_height = "wrap_content"
+		android:layout_below = "@+id/message_body_container"
+		android:layout_above = "@+id/transparent_panel"
+		android:orientation = "horizontal"
+		android:gravity = "center_vertical|center_horizontal"
+		android:weightSum = "1.0"
+	>
+		<ImageButton android:id="@+id/message_accept_btn"
+			android:src = "@drawable/cq_accept_btnx"
+			style = "@style/CQImageOnlyButton"
+		/>
+		<LinearLayout android:id="@id/spacer"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:layout_weight = "0.5"
+		/>
+		<ImageButton android:id="@+id/message_reject_btn"
+			android:src = "@drawable/cq_cancel_btnx"
+			style = "@style/CQImageOnlyButton"
+		/>
+	</LinearLayout> 
+
+    <include android:layout_alignParentBottom="true" android:layout_width="fill_parent" 
+		android:layout_height="90dp" layout="@layout/tab_bar"></include>
+</RelativeLayout>

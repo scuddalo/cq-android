@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SeekYou</string>
+    <!-- urls -->
+    <string name="server_url">http://seekyou.heroku.com</string>
+    <string name="url_login">/accounts/login/password.xml</string>
+    <string name="update_loc_url">/location/location_modify</string>
+    <string name="msg_url">/messages.xml</string>
+    <string name="msg_accept_url">/messages/\\msg_id\\/accept_message.xml</string>
+    <string name="msg_reject_url">/messages/\\msg_id\\/reject_message.xml</string>
+    <string name="invitation_accept_url">/messages/\\msg_id\\/accept_invitation.xml</string>
+    <string name="invitation_reject_url">/messages/\\msg_id\\/reject_invitation.xml</string>
+    <string name="invite_url">/messages/#{profile_id}/send_invitation.xml</string>
+    <string name="invitations_url">/messages/#{profile_id}/invitations.xml</string>
+    <string name="avatar_url">/images/#{profile_id}.gif</string>
+    <string name="update_status_url">/people/#{profile_id_num}/update_status.xml</string>
+    <string name="seek_url">/seek/create.xml</string>
+    <string name="seek_requests_url">/seek/requests.xml</string>
+    <string name="seek_requests_for_seek_url">/seek/#{seek_id}/requests.xml</string>
+    <string name="seek_requests_for_profile_url">/people/#{profile_id_num}/seek_requests.xml</string>
+    <string name="active_seek_for_profile">/people/#{profile_id_num}/active_seek.xml</string>
+    <string name="accept_seek_url">/seek/response/accept.xml</string>
+    <string name="reject_seek_url">/seek/response/reject.xml</string>
+    
+	
+	<string name="hello">Hello from cq</string>
+
+	<string name="main_button_1">Seek</string>
+	<string name="main_button_2">Messages</string>
+	<string name="main_button_3">Preferences</string>
+	<string name="pref_file_name">cq_pref</string>
+	<string name="default_seek_msg">Hey, I\'m in the neighborhood. Want to connect?</string>
+	<string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor feugiat feugiat. Vestibulum erat nisi, pulvinar id iaculis nec, lacinia id est. Cras ultrices massa et dolor fermentum nec hendrerit felis bibendum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mattis, ipsum semper ultricies pretium, mauris enim scelerisque quam, eget auctor quam arcu a lorem</string>
+</resources>

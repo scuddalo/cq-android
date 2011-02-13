@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="30dp"
+  android:background = "@drawable/cq_box_bg_middle_432x42"
+  android:orientation = "horizontal"
+  android:id = "@+id/manage_seek_row_rel_layout">
+  
+  	<ImageView android:id="@+id/manage_seek_row_photo"
+		style="@style/CQDefaultPhotoSize"
+		android:layout_gravity = "center_vertical"
+		android:layout_marginRight = "5dp"
+		android:layout_marginLeft = "5dp"
+		android:src="@drawable/default_photo" />
+  
+    <TextView android:id="@+id/manage_seek_profile_name_text"
+         android:layout_width="wrap_content"
+         android:text = "mrniceguy"
+         android:layout_gravity = "center_vertical"
+         style = "@style/BlackDisplayText"
+         android:layout_marginRight = "5dp"
+         android:layout_height="wrap_content" />
+	
+	<TextView 
+		android:text="San Francisco" 
+		android:id="@+id/manage_seek_location_text"
+		android:layout_gravity = "center_vertical"
+		style="@style/DisplayText"
+		android:textColor = "#cecece"
+		android:textStyle = "italic"
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content" 
+	>
+	</TextView>
+	
+	<LinearLayout android:id = "@+id/manage_seek_row_accepted_container"
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content"
+		android:orientation = "horizontal" 
+	android:layout_gravity="center_vertical">
+	<ImageView 
+		style="@style/CQCheckmarkImage" 
+		android:id="@+id/manage_seek_row_accepted_img"
+		android:layout_marginRight = "15dp"
+	>
+	</ImageView>
+	<ImageButton android:id = "@+id/manage_seek_row_call_btn"
+		android:src = "@drawable/cq_call_btn"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:background = "@null"
+		android:layout_marginRight = "5dp"
+	/>
+	</LinearLayout>
+</LinearLayout>

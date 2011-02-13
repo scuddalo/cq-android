@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="50dp"
+	android:orientation="horizontal"
+	android:paddingLeft="15dp" 
+	android:gravity = "center_vertical"
+	android:background="@drawable/cq_box_bg_middle_alt" android:id="@+id/who_to_seek_row_rel_layout">
+
+	<ImageView android:id="@+id/who_to_seek_row_photo"
+		style="@style/CQDefaultPhotoSize"
+		android:src="@drawable/default_photo" />
+
+	<TextView android:id="@+id/who_to_seek_row_name"
+		android:textSize="10dp" android:textStyle="bold" android:text="santoashR"
+		android:layout_gravity="center_vertical" android:textColor="#000000"
+		android:layout_width="wrap_content" android:layout_height="wrap_content" />
+	<!-- spacer -->
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="30dp" android:layout_weight="0.3" />
+	<ImageView android:layout_height="30dp" android:id="@+id/who_to_seek_tier_img"
+		android:layout_width="wrap_content" android:src="@drawable/cq_tier1_icon"
+		android:scaleType = "fitXY"
+		android:layout_gravity="right|center_vertical"
+		android:layout_marginLeft="10dp" />
+	<!-- spacer -->
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="40dp" android:layout_weight="0.3" />
+	<TextView android:id="@+id/who_to_seek_row_distance_txt"
+		android:layout_width="70dp" android:layout_height="wrap_content"
+		android:text="1.23 kms" android:layout_gravity="center_vertical" />
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="40dp" android:layout_weight="0.1" />
+	<ImageView android:id="@+id/who_to_seek_row_selected_img"
+		android:src="@drawable/cq_checkmark" android:layout_height="22dp"
+		android:scaleType="fitXY"
+		android:layout_width="22dp" android:visibility="invisible"
+		android:layout_marginRight = "25dp"
+		android:layout_gravity="center_vertical" />
+
+</LinearLayout>

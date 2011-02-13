@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:padding="5dp">
+
+
+
+	<TableLayout android:id="@+id/TableLayout01"
+	android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<TableRow 
+			android:minHeight="40px" 
+			android:gravity="center">
+			<TextView android:layout_height="wrap_content"
+			android:layout_width="wrap_content" 
+			android:id="@+id/cqNameLbl"
+			android:layout_below="@+id/TableLayout01" android:text="Name">
+			</TextView>
+			<TextView android:text="TextView02" android:id="@+id/cqName"
+				android:layout_height="wrap_content" 
+				android:layout_marginLeft="20px" 
+				android:layout_width="fill_parent">
+			</TextView>
+		</TableRow>
+		
+		<TableRow
+			android:minHeight="40px" 
+			android:gravity="center">
+			<TextView android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/cqStatusLbl"
+			android:layout_below="@+id/TableLayout01" android:text="Status">
+			</TextView>
+			<TextView android:text="TextView02" android:id="@+id/cqStatus"
+				android:layout_height="wrap_content" 
+				android:layout_marginLeft="20px" 
+				android:layout_width="fill_parent">
+			</TextView>
+		</TableRow>
+		
+		<TableRow
+			android:minHeight="40px" 
+			android:gravity="center">
+			<TextView android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/cqLocationLbl"
+			android:layout_below="@+id/TableLayout01" android:text="Location">
+			</TextView>
+			<TextView android:text="TextView02" android:id="@+id/cqLocation"
+				android:layout_height="wrap_content" 
+				android:layout_marginLeft="20px" 
+				android:layout_width="fill_parent">
+			</TextView>
+		</TableRow>
+		<TableRow
+			android:minHeight="40px" 
+			android:paddingTop="20px" android:gravity="left">
+		
+			<Button android:text="Back" 
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:id="@+id/cqProfileBackBtn">
+			</Button>
+		</TableRow>
+	</TableLayout>
+
+
+</RelativeLayout>

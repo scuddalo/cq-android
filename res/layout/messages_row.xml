@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:cq="http://schemas.android.com/apk/res/com.cq"
+  android:layout_width="fill_parent"
+  android:layout_height = "40dp"
+  android:weightSum = "1.0"
+  android:id = "@+id/messages_row_rel_layout"
+  android:background="@drawable/cq_box_bg_middle"
+  android:descendantFocusability="blocksDescendants">
+  
+  	<TextView android:id = "@+id/message_row_from_txt" 
+  		android:layout_width = "wrap_content"
+  		android:layout_height = "wrap_content"
+  		android:layout_weight = "0.1"
+  		android:paddingLeft = "10dp"
+  		android:text = "santoash"
+  		android:textSize = "9dp"
+  		android:layout_gravity = "center_vertical"
+  		style = "@style/BlackDisplayText"
+  		
+  	/>
+	<TextView 
+		android:layout_width="30dp" 
+		android:layout_height="wrap_content" 
+		android:text = "Are you available for a cup of coffee? Im open to suggestions regarding where to meet."
+		android:ellipsize = "end"
+		style="@style/BlackDisplayText"
+		android:textSize =  "10dp"
+		android:layout_gravity = "center_vertical"
+		android:layout_weight = "0.7"
+	android:id="@+id/messages_row_preview_txt"/>
+   	<ImageButton 
+   		android:layout_width = "wrap_content"
+   		android:layout_height = "wrap_content"
+   		android:src = "@drawable/cq_msg_arrow"
+   		android:layout_gravity = "center_vertical"
+        android:id= "@+id/messages_row_expand_btn"
+        android:layout_weight = "0.2"
+        android:background = "@null"
+          />
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:id="@+id/who_to_seek_root"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:background="@drawable/cq_bg">
+
+	<include layout="@layout/title_bar"
+		android:layout_alignParentTop="true" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+	<TextView android:id="@+id/who_to_seek_screen_header"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:text="Choose the connection(s) you would like to Seek: "
+		android:textStyle="bold" android:layout_below="@+id/title_bar"
+		android:layout_margin="2dp" android:textSize="12dp" />
+		
+	<ViewSwitcher android:id="@+id/who_to_seek_screen_ListComposeViewSwitcher"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/who_to_seek_screen_header"
+		android:layout_above="@+id/WhoToSeekButtonContainer">
+		<ListView android:id="@id/android:list" android:layout_width="fill_parent"
+			android:layout_below="@+id/who_to_seek_screen_header"
+			android:layout_above="@+id/WhoToSeekButtonContainer"
+			android:layout_height="wrap_content" android:drawSelectorOnTop="false"
+			android:isScrollContainer="false" android:layout_marginLeft="2dp"
+			android:layout_marginRight="2dp" android:layout_marginTop="10dp" />
+		<include layout="@layout/compose_message"
+			android:layout_width="fill_parent" android:layout_height="fill_parent" />
+	</ViewSwitcher>
+
+	<LinearLayout android:id="@+id/WhoToSeekButtonContainer"
+		android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+		android:layout_alignParentBottom="true" android:layout_width="fill_parent">
+		<!-- android:layout_above="@+id/transparent_panel" -->
+
+
+		<ImageButton android:id="@+id/WhoToSeek_CancelBtn" style="@style/CQImageOnlyButton"
+			android:src="@drawable/cq_cancel_btnx" android:layout_weight="0" />
+
+		<!-- spacer -->
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_weight="1" />
+
+		<ImageButton android:id="@+id/WhoToSeek_ComposeBtn" style="@style/CQImageOnlyButton"
+			android:src="@drawable/cq_compose_btnx" android:layout_weight="0" />
+	</LinearLayout>
+
+	<!-- include android:layout_alignParentBottom="true" android:layout_width="fill_parent" 
+		android:layout_height="90dp" layout="@layout/tab_bar"></include -->
+</RelativeLayout>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>cq-demo.kml</name>
+	<StyleMap id="default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#default+icon=http://maps.google.com/mapfiles/kml/pal3/icon60.png0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#default+icon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#default+icon=http://maps.google.com/mapfiles/kml/pal3/icon60.png</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#default+icon=http://maps.google.com/mapfiles/kml/pal3/icon52.png</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="default+icon=http://maps.google.com/mapfiles/kml/pal3/icon60.png">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal3/icon60.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="default+icon=http://maps.google.com/mapfiles/kml/pal3/icon52.png">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal3/icon52.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>1.1</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="default+icon=http://maps.google.com/mapfiles/kml/pal3/icon60.png0">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal3/icon60.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="default+icon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal3/icon52.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>1.1</scale>
+		</LabelStyle>
+	</Style>
+	<Folder>
+		<name>My Places</name>
+		<open>1</open>
+		<Style>
+			<ListStyle>
+				<listItemType>check</listItemType>
+				<ItemIcon>
+					<state>open</state>
+					<href>/Volumes/GoogleEarth-Mac/Google Earth.app/Contents/Resources/mysavedplaces_open.png</href>
+				</ItemIcon>
+				<ItemIcon>
+					<state>closed</state>
+					<href>/Volumes/GoogleEarth-Mac/Google Earth.app/Contents/Resources/mysavedplaces_closed.png</href>
+				</ItemIcon>
+				<bgColor>00ffffff</bgColor>
+				<maxSnippetLines>2</maxSnippetLines>
+			</ListStyle>
+		</Style>
+		<Placemark>
+			<name>Chestnut St, Berkeley, CA 94702</name>
+			<address>Chestnut St, Berkeley, CA 94702</address>
+			<LookAt>
+				<longitude>-122.288493</longitude>
+				<latitude>37.87321</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+			<Point>
+				<coordinates>-122.288493,37.87321,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4363 Albert St, Oakland, CA 94619</name>
+			<address>4363 Albert St, Oakland, CA 94619</address>
+			<LookAt>
+				<longitude>-122.189773</longitude>
+				<latitude>37.788638</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+			<Point>
+				<coordinates>-122.189773,37.788638,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Mission St &amp; 17th St, San Francisco, CA 94110</name>
+			<address>Mission St &amp; 17th St, San Francisco, CA 94110</address>
+			<LookAt>
+				<longitude>-122.419507</longitude>
+				<latitude>37.763435</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+			<Point>
+				<coordinates>-122.419507,37.763435,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2000 Forbes Ave, Pittsburgh, PA 15219</name>
+			<address>2000 Forbes Ave, Pittsburgh, PA 15219</address>
+			<LookAt>
+				<longitude>-79.97769099999999</longitude>
+				<latitude>40.437332</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+			<Point>
+				<coordinates>-79.97769099999999,40.437332,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2500 Acorn Ct, Wexford, PA 15090</name>
+			<address>2500 Acorn Ct, Wexford, PA 15090</address>
+			<LookAt>
+				<longitude>-80.07423900000001</longitude>
+				<latitude>40.596652</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+			<Point>
+				<coordinates>-80.07423900000001,40.596652,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1360 N Sandburg Terrace, Chicago, IL 60610</name>
+			<open>1</open>
+			<address>1360 N Sandburg Terrace, Chicago, IL 60610</address>
+			<LookAt>
+				<longitude>-87.632096</longitude>
+				<latitude>41.907401</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png0</styleUrl>
+			<Point>
+				<coordinates>-87.632096,41.907401,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>300 N Riverside Plaza, Chicago, IL 60606</name>
+			<open>1</open>
+			<address>300 N Riverside Plaza, Chicago, IL 60606</address>
+			<LookAt>
+				<longitude>-87.63969299999999</longitude>
+				<latitude>41.88716</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png</styleUrl>
+			<Point>
+				<coordinates>-87.63969299999999,41.88716,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Carnegie Mellon University, Pittsburgh, PA</name>
+			<open>1</open>
+			<address>Carnegie Mellon University, Pittsburgh, PA</address>
+			<LookAt>
+				<longitude>-79.94355400000001</longitude>
+				<latitude>40.443758</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png</styleUrl>
+			<Point>
+				<coordinates>-79.94355400000001,40.443758,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>University of California Berkeley, Oakland, CA</name>
+			<open>1</open>
+			<address>University of California Berkeley, Oakland, CA</address>
+			<LookAt>
+				<longitude>-122.245536</longitude>
+				<latitude>37.87544</latitude>
+				<altitude>0</altitude>
+				<range>2899.259766</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon60.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon52.png</styleUrl>
+			<Point>
+				<coordinates>-122.245536,37.87544,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

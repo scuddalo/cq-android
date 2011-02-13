@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:cq="http://schemas.android.com/apk/res/com.cq"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	>
+
+	<com.google.android.maps.MapView 
+     	android:id="@+id/mapView" 
+     	android:layout_width="fill_parent" 
+     	android:layout_height="fill_parent"
+     	android:enabled="true" 
+     	android:clickable="true" 
+     	android:apiKey="09fCY1ADkhzEmQI4FNmtBA4lm3CRq0YwTiWaWLw" 
+     					
+     	/>
+     		
+    
+	<include layout="@layout/title_bar" 
+		android:layout_alignParentTop="true" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		/>
+
+	<!-- User info panel -->
+	<ViewSwitcher 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" 
+		android:layout_below="@+id/title_bar"
+		android:id="@+id/status_viewswitcher" android:layout_marginTop="-2dp">
+		
+		<RelativeLayout android:id="@+id/user_info_panel"
+		android:layout_width="fill_parent"
+	    android:background = "@drawable/cq_status_bg" 
+		android:gravity="left" 
+		android:layout_height="70dp">
+		
+		<ImageView 
+			android:id="@+id/user_photo"
+			android:layout_width="wrap_content"
+	    	android:paddingTop="5px"
+	    	android:layout_alignParentLeft = "true"
+	    	android:src = "@drawable/default_photo"
+		 	android:layout_centerVertical="true" 
+		 	android:layout_height="wrap_content" 
+		 	android:focusable="true"/>
+		 
+		     <LinearLayout 
+		     	android:layout_width = "fill_parent"
+		     	android:layout_height = "wrap_content"
+		     	android:layout_toRightOf="@id/user_photo" android:layout_marginTop="5dp" android:layout_marginLeft="5dp">
+			 	 <EditText  
+			        android:id="@+id/user_status"
+			        android:hint="Status" 
+			        android:textSize="10dp" 
+			        android:layout_width="fill_parent" 
+			        android:layout_weight = "0.7" android:layout_height="wrap_content" android:gravity="left|center_vertical"/>   
+				
+				<ViewSwitcher 
+					android:layout_height="wrap_content" 
+					android:layout_width="wrap_content" 
+					android:id="@+id/refresh_btn_viewswitcher" 
+					android:layout_gravity = "right">
+					<!-- child1 -->    
+					<ImageButton android:id = "@+id/refreshBtn"
+						android:src = "@drawable/cq_refresh_btnx"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:background = "@null"
+						android:layout_gravity = "right"
+					></ImageButton>
+					<!-- child2 -->
+					<ProgressBar android:id="@+id/map_refresh_progress_bar"
+		  				android:indeterminateOnly ="true" 
+		  				android:layout_height="30dp" 
+		  				android:layout_width="30dp" 
+		  				android:layout_gravity = "center_vertical|center_vertical"/>
+				</ViewSwitcher>
+			</LinearLayout>
+			<TextView
+			        android:layout_width="wrap_content"
+			        android:id="@+id/user_location"
+			        android:layout_toRightOf="@id/user_photo"
+			        android:layout_alignWithParentIfMissing="true"
+			        android:layout_gravity="bottom"
+			        android:layout_alignParentBottom="true"
+			        android:text="Alameda, CA"
+			        android:textAppearance = "@style/DisplayText" 
+			        android:layout_height="20dp" android:layout_marginLeft="5dp"/>
+		     	
+		</RelativeLayout>
+		
+		<include layout="@layout/status_update" />
+	</ViewSwitcher>
+ 	
+	<include layout="@layout/tab_bar"></include>        
+     	
+	  
+</RelativeLayout>
+    

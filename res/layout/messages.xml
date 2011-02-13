@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:id = "@+id/messages_root"
+         android:layout_width="fill_parent" 
+         android:layout_height="fill_parent"
+		 android:background="@drawable/cq_bg">
+ 	
+ 	<include layout="@layout/title_bar"
+		android:layout_alignParentTop="true" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+		
+	<LinearLayout 
+    	android:id="@+id/messages_list_header_container" 
+    	android:layout_width="wrap_content"
+    	android:layout_below = "@+id/title_bar" 
+    	android:layout_height="40dp"
+    	android:paddingLeft = "15dp"
+    	android:background = "@drawable/cq_box_bg_top">
+    	  <TextView 
+			android:text = "Inbox"
+			android:layout_height = "wrap_content"
+			android:layout_width = "wrap_content"
+			android:layout_gravity = "left|center_vertical"
+			style = "@style/LabelText"
+		/>
+    </LinearLayout>
+    			
+     	<ListView android:id="@id/android:list"
+               android:layout_width="fill_parent" 
+               android:layout_height="wrap_content"
+               android:layout_below = "@+id/messages_list_header_container"
+               android:layout_above = "@+id/transparent_panel"
+               android:drawSelectorOnTop="false" 
+               android:divider="@null" 
+               android:isScrollContainer="false"
+		/>
+      
+     <include android:layout_alignParentBottom="true" android:layout_width="fill_parent" 
+		android:layout_height="90dp" layout="@layout/tab_bar"></include>
+ </RelativeLayout>
