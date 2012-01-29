@@ -149,17 +149,17 @@ public class LoginActivity extends Activity {
 
       // TODO: have to change how the backend expects profile id
       // profile id format (I think) is <profile_id>-<username>
-      editor.putString("profileId", profileIdStr);
+      editor.putString(SeekYouConstants.ProfileId, profileIdStr);
 
-      editor.putString("username", username);
-      editor.putString("password", password);
+      editor.putString(SeekYouConstants.Username, username);
+      editor.putString(SeekYouConstants.Password, password);
 
       String photoFileName = profileIdStr + "." + profile.photoFileExtension();
       Bitmap photo = BitmapFactory.decodeFile("/data/data/com.cq/files/" + photoFileName);
 
       // making sure you have the photo and you have the photo file name 
       if (photo == null && profile.getPhotoFileName() != null && profile.getPhotoFileName().length() > 0) {
-        editor.putString("photoFileName", photoFileName);
+        editor.putString(SeekYouConstants.PhotoFileName, photoFileName);
         String fileUrl = getString(R.string.server_url) + "/images/" + "/thumb/" + profileIdStr + "." + profile.photoFileExtension();
         photo = RequestTool.getInstance(pref).downloadImage(fileUrl);
         photo = ImageTool.resize(photo, 50, 50);
@@ -185,7 +185,7 @@ public class LoginActivity extends Activity {
         profile.setStatus("");
       }
 
-      editor.putString("status", profile.getStatus());
+      editor.putString(SeekYouConstants.Status, profile.getStatus());
 
       editor.commit();
     }

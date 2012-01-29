@@ -14,6 +14,8 @@
     <string name="invitations_url">/messages/#{profile_id}/invitations.xml</string>
     <string name="avatar_url">/images/#{profile_id}.gif</string>
     <string name="update_status_url">/people/#{profile_id_num}/update_status.xml</string>
+    <string name="go_offline_url">/people/#{profile_id_num}/offline.xml</string>
+    <string name="go_online_url">/people/#{profile_id_num}/online.xml</string>
     <string name="seek_url">/seek/create.xml</string>
     <string name="seek_requests_url">/seek/requests.xml</string>
     <string name="seek_requests_for_seek_url">/seek/#{seek_id}/requests.xml</string>
@@ -21,6 +23,8 @@
     <string name="active_seek_for_profile">/people/#{profile_id_num}/active_seek.xml</string>
     <string name="accept_seek_url">/seek/response/accept.xml</string>
     <string name="reject_seek_url">/seek/response/reject.xml</string>
+    <string name="unreads_for_profile">/people/#{profile_id_num}/unreads.xml</string>
+    <string name="mark_seek_request_as_read">/seek/request/#{seek_request_id}/mark_read.xml</string>
     
 	
 	<string name="hello">Hello from cq</string>

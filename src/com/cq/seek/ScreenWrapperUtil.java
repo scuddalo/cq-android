@@ -8,6 +8,7 @@ import java.util.List;
 import org.w3c.dom.Document;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -21,44 +22,90 @@ import com.cq.tool.RequestTool;
 public class ScreenWrapperUtil<T extends Activity> {
 
   T context;
-  
-  final String Tag = ScreenWrapperUtil.class.toString();
-  
-  ImageButton homeBtn, preferencesBtn, seekBtn, msgsBtn, addToTiersBtn;
-  
-  boolean showBackBtnInsteadOfHomeBtn = false;
 
-  
+  final String Tag = ScreenWrapperUtil.class.toString();
+
+  ImageButton homeBtn, preferencesBtn, seekBtn, msgsBtn, addToTiersBtn;
+
+  boolean showBackBtnInsteadOfHomeBtn = false;
+  boolean showGoOffGridBtnInsteadOfHomeBtn = false;
+
   public ScreenWrapperUtil(T ctx) {
     context = ctx;
   }
-  
-  public void setShowBackBtnInsteadOfHomeBtn(boolean val) {
+
+  public void setShowBackBtnInsteadOfHomeBtn (boolean val) {
     showBackBtnInsteadOfHomeBtn = val;
   }
 
-  void setupScreenWrapperViews() {
+  public void setShowGoOffGridBtnInsteadOfHomeBtn (boolean val) {
+    showGoOffGridBtnInsteadOfHomeBtn = val;
+  }
+
+  void setupScreenWrapperViews () {
     setupHomeBtn();
     preferencesBtn = (ImageButton) context.findViewById(R.id.prefBtn);
+    preferencesBtn.setEnabled(true);
     seekBtn = (ImageButton) context.findViewById(R.id.seekBtn);
     seekBtn.setOnClickListener(seekYouButtonListener);
-    
+    seekBtn.setEnabled(true);
+
     msgsBtn = (ImageButton) context.findViewById(R.id.msgBtn);
     msgsBtn.setOnClickListener(IntentTool.createOnclickListener(context, MessagesListActivity.class, null));
+    msgsBtn.setEnabled(true);
 
     addToTiersBtn = (ImageButton) context.findViewById(R.id.addToTiersBtn);
+    addToTiersBtn.setEnabled(true);
   }
-  
+
   void setupHomeBtn () {
     homeBtn = (ImageButton) context.findViewById(R.id.homeBtn);
-    if(showBackBtnInsteadOfHomeBtn) {
+    homeBtn.setEnabled(true);
+    if (showGoOffGridBtnInsteadOfHomeBtn) {
+      String prefFileName = context.getText(R.string.pref_file_name).toString();
+      SharedPreferences prefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
+      boolean isInvisible = prefs.getBoolean(SeekYouConstants.Invisible, false);
+      if (isInvisible) {
+        homeBtn.setImageResource(R.drawable.cq_invisible_btn_down);
+      }
+      else {
+        homeBtn.setImageResource(R.drawable.cq_invisible_btn);
+      }
+    }
+    else if (showBackBtnInsteadOfHomeBtn) {
       homeBtn.setImageResource(R.drawable.cq_back_btn);
     }
-    
+
     homeBtn.setOnClickListener(new View.OnClickListener()
     {
       public void onClick (View v) {
-        if(showBackBtnInsteadOfHomeBtn) {
+        if (showGoOffGridBtnInsteadOfHomeBtn) {
+          String prefFileName = context.getText(R.string.pref_file_name).toString();
+          SharedPreferences prefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
+          boolean isInvisible = prefs.getBoolean(SeekYouConstants.Invisible, false);
+
+          StringBuilder sb = new StringBuilder();
+          sb.append(context.getString(R.string.server_url));
+          //toggle the state
+          if (isInvisible) {
+            sb.append(context.getString(R.string.go_online_url));
+          }
+          else {
+            sb.append(context.getString(R.string.go_offline_url));
+          }
+          String profileId = prefs.getString(SeekYouConstants.ProfileId, null);
+          if (profileId != null) {
+            String url = sb.toString().replaceAll("#\\{profile_id_num\\}", profileId);
+            Document doc = RequestTool.getInstance(prefs).makePostRequest(url, null, 200);
+            if (doc != null) {
+              ((ImageButton) v).setImageResource(isInvisible ? R.drawable.cq_invisible_btn_down : R.drawable.cq_invisible_btn);
+              SharedPreferences.Editor editor = prefs.edit();
+              editor.putBoolean(SeekYouConstants.Invisible, !isInvisible);
+              editor.commit();
+            }
+          }
+        }
+        else if (showBackBtnInsteadOfHomeBtn) {
           context.finish();
         }
         else {

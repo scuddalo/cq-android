@@ -17,7 +17,6 @@ public class Seek implements Base {
 
   Integer id;
   Boolean isActive;
-  Message message;
   Profile owner;
   Set<Profile> seekedProfiles;
   Location location;
@@ -54,8 +53,6 @@ public class Seek implements Base {
       Element ownerElement = XmlTool.getFirstElement(node, "owner");
       seek.owner = Profile.constructFromXml(ownerElement);
 
-      Element msgElement = XmlTool.getFirstElement(node, "message");
-      seek.message = Message.constructFromXml(msgElement);
 
       Element seekRequestsElement = XmlTool.getFirstElement(node, "seek-requests");
       if (seekRequestsElement != null) {
@@ -90,14 +87,6 @@ public class Seek implements Base {
 
   public void setIsActive (Boolean isActive) {
     this.isActive = isActive;
-  }
-
-  public Message getMessage () {
-    return message;
-  }
-
-  public void setMessage (Message message) {
-    this.message = message;
   }
 
   public Profile getOwner () {

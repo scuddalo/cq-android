@@ -6,6 +6,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,10 @@ import com.cq.tool.RequestTool;
 
 public class MessageActivity extends Activity {
   
+  private static final String TAG = "MessageActivity";
   ScreenWrapperUtil<MessageActivity> screenWrapper;
   ProgressDialog dialog;
+  int position; // position of thi msg in the MessagesListActivity recieved via intent extras
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class MessageActivity extends Activity {
     cache.open();
     Profile  owner = null;
     int profileId = getIntent().getIntExtra("ownerId", -1);
+    position = getIntent().getIntExtra("listPosition", -1);
     if(profileId != -1) {
       owner = cache.getProfile(profileId);
     }
@@ -71,7 +75,7 @@ public class MessageActivity extends Activity {
       {
         public void onClick (View v) {
           String str = "Rejecting seek from " + profile.displayNameOrLogin();
-          ProgressDialog.show(MessageActivity.this, "", str, true);
+          dialog = ProgressDialog.show(MessageActivity.this, "", str, true);
           Thread t = new Thread(null, new AcceptRejectRunnable(seekRequestId, false, null), "MagentoBackground");
           t.start();
         }
@@ -106,7 +110,11 @@ public class MessageActivity extends Activity {
       // make the request
       requestTool.makePostRequest(urlReq, paramsMap, true, 200);
       if(dialog != null) dialog.dismiss();
-      finish();
+      int resultCode = accept ? MessagesListActivity.USER_ACCEPTED : MessagesListActivity.USER_REJECTED;
+      Intent resultData = new Intent();
+      resultData.putExtra("listPosition", position);
+      MessageActivity.this.setResult(resultCode, resultData);
+      MessageActivity.this.finish();
     }
   }
 }

@@ -107,6 +107,10 @@ public class Message implements Base {
   public boolean isRead () {
     return read;
   }
+  
+  public void setIsRead(boolean v) {
+    read = v;
+  }
 
   public Profile getFromProfile () {
     return fromProfile;

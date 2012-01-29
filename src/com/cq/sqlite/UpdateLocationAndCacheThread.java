@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.cq.model.Profile;
 import com.cq.overlay.MapLocation;
@@ -19,6 +20,7 @@ import com.cq.overlay.MapLocationOverlay;
 import com.cq.seek.HomeActivity;
 import com.cq.seek.R;
 import com.cq.tool.RequestTool;
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 
@@ -26,6 +28,7 @@ public class UpdateLocationAndCacheThread extends AsyncTask<Location, Void, List
 
   WeakReference<HomeActivity> activity;
   WeakReference<MapView> mapView;
+  Location location;
 
   public UpdateLocationAndCacheThread(HomeActivity a, MapView m) {
     activity = new WeakReference<HomeActivity>(a);
@@ -34,7 +37,7 @@ public class UpdateLocationAndCacheThread extends AsyncTask<Location, Void, List
 
   @Override
   protected List<Profile> doInBackground (Location... params) {
-    Location location = params[0];
+    location = params[0];
     List<Profile> profiles = new ArrayList<Profile>();
     if (location != null) {
       String lat = Double.toString(location.getLatitude());
@@ -95,12 +98,20 @@ public class UpdateLocationAndCacheThread extends AsyncTask<Location, Void, List
 
   @Override
   protected void onPostExecute (List<Profile> profiles) {
+    if(profiles != null && profiles.size() == 0) {
+      Toast.makeText(activity.get(), "No connections found close to you", Toast.LENGTH_SHORT);
+    }
     addOverlay(profiles);
     activity.get().showRefreshMapBtn();
   }
 
   void addOverlay (List<Profile> profiles) {
+    int lat = (int) (location.getLatitude() * 1e6);
+    int lang = (int) (location.getLongitude() * 1e6);
+    GeoPoint point = new GeoPoint(lat, lang);
+    mapView.get().getController().animateTo(point);
     List<Overlay> overlays = mapView.get().getOverlays();
+    
     overlays.clear();
     List<MapLocation> mapLocations = new ArrayList<MapLocation>();
     for(Profile profile : profiles) {

@@ -6,15 +6,19 @@ import org.w3c.dom.Document;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.cq.model.Message;
 import com.cq.model.Profile;
 import com.cq.model.Seek;
 import com.cq.model.SeekRequest;
+import com.cq.tool.IntentTool;
 import com.cq.tool.LocationTool;
 import com.cq.tool.RequestTool;
 import com.cq.view.ManageSeekRequestsAdapter;
@@ -29,6 +33,7 @@ public class ManageSeekRequestActivity extends ListActivity {
   Integer seekId;
   ProgressDialog progressDialog;
   TextView header, messageTxt, messageHeaderTxt;
+  ImageButton newSeekBtn;
   ScreenWrapperUtil<ManageSeekRequestActivity> screenWrapper;
 
   @Override
@@ -40,11 +45,15 @@ public class ManageSeekRequestActivity extends ListActivity {
     screenWrapper.setShowBackBtnInsteadOfHomeBtn(false);
     screenWrapper.setupScreenWrapperViews();
     screenWrapper.seekBtn.setPressed(true);
+    screenWrapper.seekBtn.setEnabled(false);
     
     header = (TextView) findViewById(R.id.ManageSeek_Header);
     messageTxt = (TextView) findViewById(R.id.ManageSeek_MessageBodyTxt);
     messageHeaderTxt = (TextView) findViewById(R.id.ManageSeek_MsgHeaderTxt);
-    
+    newSeekBtn = (ImageButton) findViewById(R.id.newSeekBtn);
+     
+    newSeekBtn.setOnClickListener(IntentTool.createOnclickListener(this, WhoToSeekActivity.class, null));
+
     //init collections
     seekRequests = new ArrayList<SeekRequest>();
 
@@ -77,6 +86,7 @@ public class ManageSeekRequestActivity extends ListActivity {
 
     Thread thread = new Thread(null, viewSeekRequests, "MagentoBackground");
     thread.start();
+    
 
     showProgressDialog("Loading your active seek. Please wait ...");
   }
@@ -111,9 +121,11 @@ public class ManageSeekRequestActivity extends ListActivity {
   private Runnable afterGettingSeekRequests = new Runnable()
   {
     public void run () {
+      Message msg = null;
       if (seekRequests != null && seekRequests.size() > 0) {
         adapter.notifyDataSetChanged();
         for(SeekRequest r : seekRequests) {
+          if (msg == null) msg = r.getMessage(); //get any of the message, as the text will be the same.
           adapter.add(r);
         }
       }
@@ -127,11 +139,11 @@ public class ManageSeekRequestActivity extends ListActivity {
         messageHeaderTxt.setCompoundDrawablesWithIntrinsicBounds(new BitmapDrawable(seek.getOwner().getPhotoLongVersion(ManageSeekRequestActivity.this, 25, 25)), null, null, null);
       }
       
-      if(seek != null && seek.getMessage() != null) {
-        messageTxt.setText(seek.getMessage().getContent());
+      if(msg != null) {
+        messageTxt.setText(msg.getContent());
       }
       
-      progressDialog.dismiss();
+      if(progressDialog.isShowing()) progressDialog.dismiss();
       adapter.notifyDataSetChanged();
     }
   };

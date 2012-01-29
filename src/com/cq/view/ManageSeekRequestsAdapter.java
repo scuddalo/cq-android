@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.cq.tool.LocationTool;
 
 public class ManageSeekRequestsAdapter extends ArrayAdapter<SeekRequest> {
 
+  private static final String Tag = "ManageSeekRequestsAdapter";
   Context context;
   List<SeekRequest> seekRequests;
 
@@ -76,8 +78,10 @@ public class ManageSeekRequestsAdapter extends ArrayAdapter<SeekRequest> {
         cache.open();
         Profile currentUserProfile = cache.getProfile(profileId);
         cache.close();
-        String str = GeoTools.printableDistanceInKm(currentUserProfile.getLocation().getGeoPoint(), seekedProfile.getLocation().getGeoPoint());
-        holder.locationText.setText(str);
+        if(currentUserProfile.getLocation() != null && seekedProfile.getLocation() != null) {
+          String str = GeoTools.printableDistanceInKm(currentUserProfile.getLocation().getGeoPoint(), seekedProfile.getLocation().getGeoPoint());
+          holder.locationText.setText(str);
+        }
       }
 
       if (seekRequest.getAccepted()) {

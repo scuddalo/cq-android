@@ -35,7 +35,7 @@
 
 
 		<ImageButton android:id="@+id/WhoToSeek_CancelBtn" style="@style/CQImageOnlyButton"
-			android:src="@drawable/cq_cancel_btnx" android:layout_weight="0" />
+			android:layout_weight="0" android:src="@drawable/cq_reject_btnx"/>
 
 		<!-- spacer -->
 		<LinearLayout android:layout_width="wrap_content"

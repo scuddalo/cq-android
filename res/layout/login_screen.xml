@@ -38,7 +38,7 @@
 				android:layout_gravity="center_vertical" android:textColor="#000"
 				android:hint="SeekYou Username" android:textColorHint="#cecece"
 				android:background="@drawable/white" android:layout_marginTop="2dp"
-				android:nextFocusDown="@+id/txtPassword" android:textSize="18dp" android:paddingBottom="2dp" android:paddingLeft="10dp">
+				android:nextFocusDown="@+id/txtPassword" android:textSize="18dp" android:paddingBottom="2dp" android:paddingLeft="10dp" android:singleLine="true">
 			</EditText>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/PasswordLayout"
@@ -55,7 +55,7 @@
 				android:textColorHint="#cecece" android:password="true"
 				android:textColor="#000" android:hint="SeekYou Password"
 				android:background="@drawable/white" android:layout_marginTop="2dp"
-				android:nextFocusDown="@+id/btnSign" android:paddingBottom="2dp" android:paddingLeft="10dp">
+				android:nextFocusDown="@+id/btnSign" android:paddingBottom="2dp" android:paddingLeft="10dp" android:singleLine="true">
 			</EditText>
 		</LinearLayout>
 

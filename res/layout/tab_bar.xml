@@ -5,11 +5,32 @@
 	android:layout_centerHorizontal="true"
 	android:layout_alignParentBottom="true" android:gravity="center"
 	android:layout_height="90dp">
-
-	<ImageButton android:id="@+id/msgBtn" android:src="@drawable/cq_inbox_btnx"
-		android:background="@null" android:layout_gravity="bottom|left"
-		style="@style/TabbarOuterButton">
-	</ImageButton>
+    <RelativeLayout 
+    	android:layout_height="match_parent" 
+    	android:layout_width="wrap_content" 
+    	android:layout_gravity = "bottom|left"
+    	android:id="@+id/messageIconContainer">
+    	<TextView android:id="@+id/msgAlert"
+    		android:text = "1"
+    		android:height = "20dp"
+    		android:background="@drawable/cq_msg_alert_bg" 
+    		android:layout_width="30dp" 
+    		android:layout_height="30dp" 
+    		android:maxLines="1" 
+    		android:paddingLeft="10dp" 
+    		android:paddingTop="5dp" 
+    		android:textColor="@drawable/white" 
+    		android:textSize="12dp" 
+    		android:textStyle="bold" 
+    		android:layout_alignBottom="@+id/msgBtn" 
+    		android:layout_marginBottom="50dp" 
+    		android:layout_marginLeft="50dp" android:visibility="invisible"/>
+    	<ImageButton android:background="@null" 
+    			style="@style/TabbarOuterButton" 
+    			android:src="@drawable/cq_inbox_btnx" 
+    			android:id="@+id/msgBtn">
+    	</ImageButton>
+    </RelativeLayout>
 	<LinearLayout android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:layout_weight="1"
 		android:gravity="center_horizontal">
@@ -20,7 +41,6 @@
 		</ImageButton>
 	</LinearLayout>
 	<ImageButton android:id="@+id/addToTiersBtn" android:src="@drawable/cq_tiers_btnx"
-		android:background="@null" android:layout_gravity="right|bottom"
-		style="@style/TabbarOuterButton">
+		android:background="@null" style="@style/TabbarOuterButton" android:layout_gravity="top|right">
 	</ImageButton>
 </LinearLayout>

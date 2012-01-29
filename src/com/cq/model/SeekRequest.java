@@ -17,6 +17,7 @@ public class SeekRequest implements Base {
   Profile seekedProfile;
   Integer id;
   Boolean accepted;
+  Message message;
 
   public static List<SeekRequest> constructFromXml (Document doc) {
     List<SeekRequest> seekRequests = new ArrayList<SeekRequest>();
@@ -49,6 +50,9 @@ public class SeekRequest implements Base {
 
       Element seekedProfileElement = XmlTool.getFirstElement(node, "seeked-profile");
       seekRequest.seekedProfile = Profile.constructFromXml(seekedProfileElement);
+      
+      Element msgElement = XmlTool.getFirstElement(node, "message");
+      seekRequest.message = Message.constructFromXml(msgElement);
 
       seekRequest.accepted = new Boolean(XmlTool.getSimpleElementText(node, "is-accepted"));
     }
@@ -87,4 +91,13 @@ public class SeekRequest implements Base {
   public void setAccepted (Boolean a) {
     this.accepted = a;
   }
+  
+  public Message getMessage () {
+    return message;
+  }
+
+  public void setMessage (Message message) {
+    this.message = message;
+  }
+
 }

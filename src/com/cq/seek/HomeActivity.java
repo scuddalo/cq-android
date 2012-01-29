@@ -15,14 +15,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,15 +33,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.cq.listeners.SeekPollListener;
 import com.cq.model.Profile;
 import com.cq.model.Seek;
 import com.cq.overlay.MapLocation;
 import com.cq.overlay.MapLocationOverlay;
+import com.cq.seek.service.SeekPollingService;
 import com.cq.sqlite.CacheDBAdapter;
 import com.cq.sqlite.UpdateLocationAndCacheThread;
-import com.cq.tool.IntentTool;
 import com.cq.tool.LocationTool;
 import com.cq.tool.RequestTool;
 import com.google.android.maps.GeoPoint;
@@ -67,10 +70,17 @@ public class HomeActivity extends MapActivity {
   Geocoder geocoder;
   ViewSwitcher statusViewSwitcher;
   ViewSwitcher refreshBtnViewSwitcher;
+  ImageButton refreshBtn;
+  ScreenWrapperUtil<HomeActivity> screenWrapper;
+
 
   public HomeActivity() {
   }
 
+  public SharedPreferences sharedPrefs() {
+    String prefFileName = getText(R.string.pref_file_name).toString();
+    return getSharedPreferences(prefFileName, MODE_PRIVATE);
+  }
   @Override
   public void onCreate (android.os.Bundle icicle) {
     super.onCreate(icicle);
@@ -80,12 +90,29 @@ public class HomeActivity extends MapActivity {
     ProgressDialog progressDialog = ProgressDialog.show(this, "", "Loading ...", true);
     progressDialog.show();
 
-    String prefFileName = getText(R.string.pref_file_name).toString();
-    final SharedPreferences prefs = getSharedPreferences(prefFileName, MODE_PRIVATE);
 
-    //status text setup
+    screenWrapper = new ScreenWrapperUtil<HomeActivity>(this);
+    screenWrapper.setShowGoOffGridBtnInsteadOfHomeBtn(true);
+    screenWrapper.setupScreenWrapperViews();
+    screenWrapper.homeBtn.setEnabled(false);
+    screenWrapper.homeBtn.setPressed(true);
+
+    
+    final SharedPreferences prefs = sharedPrefs();
+
+    
     initStatusViewSwitcher();
     initRefreshBtnViewSwitcher();
+
+    refreshBtn = (ImageButton) findViewById(R.id.refreshBtn);
+    refreshBtn.setOnClickListener(new View.OnClickListener() {
+      public void onClick (View v) {
+        Location loc = HomeActivity.this.getLastKnownLocation();
+        HomeActivity.this.updateLocataion(loc);
+      }
+    });
+    
+  //status text setup
     statusText = (EditText) findViewById(R.id.user_status);
     statusText.setText(prefs.getString("status", ""));
     statusText.setOnClickListener(new View.OnClickListener()
@@ -178,17 +205,66 @@ public class HomeActivity extends MapActivity {
       Log.i(Tag, "null location");
     }
 
-    mapController.setZoom(12);
+    mapController.setZoom(6);
     mapView.invalidate();
 
+    final TextView msgAlert = (TextView) this.findViewById(R.id.msgAlert);
+    
     //set up onclick for seek button 
     ImageButton seekBtn = (ImageButton) this.findViewById(R.id.seekBtn);
     seekBtn.setOnClickListener(seekYouButtonListener);
 
     //set up onclick for msg button
     ImageButton msgBtn = (ImageButton) this.findViewById(R.id.msgBtn);
-    msgBtn.setOnClickListener(IntentTool.createOnclickListener(this, MessagesListActivity.class, null));
+    msgBtn.setOnClickListener(new View.OnClickListener() {
 
+      public void onClick (View v) {
+        Intent goFromSrcToTaget = new Intent(HomeActivity.this, MessagesListActivity.class);
+        HomeActivity.this.startActivity(goFromSrcToTaget);
+        msgAlert.setVisibility(View.INVISIBLE);
+      }
+      
+    });
+    
+    
+    SeekPollingService.setActitvity(this);
+    SeekPollingService.setListener(new SeekPollListener() {
+      public void processPollResult (final int[] seeksUpdate) {
+        runOnUiThread(new Runnable(){
+          public void run () {
+            Log.i(Tag, "############ recieved seekupdate: " + seeksUpdate[SeekPollListener.NewSeekRequests]  + "" + seeksUpdate[SeekPollListener.UnreadSeekRequests] + "" + seeksUpdate[SeekPollListener.NewSeekResponses] );
+            
+            if(seeksUpdate[SeekPollListener.NewSeekRequests] > 0) {
+              Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+              v.vibrate(1000);
+              msgAlert.setText("" + seeksUpdate[SeekPollListener.NewSeekRequests]);
+	            msgAlert.bringToFront();
+	            msgAlert.setVisibility(View.VISIBLE);
+            }
+            
+            if(seeksUpdate[SeekPollListener.UnreadSeekRequests] > 0) {
+              if(seeksUpdate[SeekPollListener.NewSeekRequests] < seeksUpdate[SeekPollListener.UnreadSeekRequests]) {
+                msgAlert.setText("" + seeksUpdate[SeekPollListener.UnreadSeekRequests]);
+              }
+              msgAlert.bringToFront();
+              msgAlert.setVisibility(View.VISIBLE);
+            }
+            
+            if(seeksUpdate[SeekPollListener.UnreadSeekRequests] == 0 && seeksUpdate[SeekPollListener.NewSeekRequests] == 0) {
+              msgAlert.setVisibility(View.INVISIBLE);
+            }
+              
+            
+            if(seeksUpdate[SeekPollListener.NewSeekResponses] > 0) {
+              Toast.makeText(HomeActivity.this, "Your active seek has " + seeksUpdate[SeekPollListener.NewSeekResponses] + " of new responses.", 2000).show();
+            }
+          }
+        });
+      }
+      
+    });
+    Intent svc = new Intent(this, SeekPollingService.class);
+    startService(svc);
     progressDialog.dismiss();
   }
 
@@ -212,6 +288,7 @@ public class HomeActivity extends MapActivity {
     super.onResume();
     // Start updates (doc recommends delay >= 60000 ms)
     locationManager.requestLocationUpdates(best, 15000, 1, locationListener);
+    startService(new Intent(this, SeekPollingService.class));
   }
 
   @Override
@@ -219,6 +296,13 @@ public class HomeActivity extends MapActivity {
     super.onPause();
     // Stop updates to save power while app paused
     locationManager.removeUpdates(locationListener);
+  }
+  
+  @Override
+  protected void onDestroy () {
+    super.onDestroy();
+    Intent svc = new Intent(this, SeekPollingService.class);
+    stopService(svc);
   }
 
   void updateLocataion (Location location) {
@@ -377,7 +461,6 @@ public class HomeActivity extends MapActivity {
         updateLocataion(location);
         //	            addOverlay (profiles);
 
-        mapController.setZoom(12);
         mapView.invalidate();
       }
     }
@@ -415,12 +498,14 @@ public class HomeActivity extends MapActivity {
       String[] tokens = profileIdString.split("-");
       String profileId = tokens[0];
       String activeSeekUrl = getString(R.string.server_url) + getString(R.string.active_seek_for_profile).replaceAll("#\\{profile_id_num\\}", profileId);
+      Log.i(Tag, "############# activeSeekUrl " + activeSeekUrl);
       Document doc = RequestTool.getInstance(prefs).makeGetRequest(activeSeekUrl, null, 200);
       List<Seek> seeks = Seek.constructFromXml(doc);
       Seek activeSeek = seeks != null && seeks.size() > 0 ? seeks.get(0) : null;
       Intent result = null;
       if (activeSeek != null) {
         try {
+          Log.i(Tag, "############ active seek found");
           result = new Intent(HomeActivity.this, ManageSeekRequestActivity.class);
           ByteArrayOutputStream bos = new ByteArrayOutputStream();
           ObjectOutputStream oos;
@@ -474,5 +559,15 @@ public class HomeActivity extends MapActivity {
     best = locationManager.getBestProvider(criteria, true);
     Log.i(Tag, "Best provider is " + best);
     return locationManager.getLastKnownLocation(best);
+  }
+  
+  @Override
+  public boolean onKeyDown (int keyCode, KeyEvent event) {
+    if( keyCode == KeyEvent.KEYCODE_BACK ) {
+      return true;
+    }
+    else {
+      return super.onKeyDown(keyCode, event);
+    }
   }
 }

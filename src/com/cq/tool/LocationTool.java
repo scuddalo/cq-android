@@ -22,10 +22,22 @@ public class LocationTool {
       List<Address> addresses = geocoder.getFromLocation(p.getLatitudeE6() * 1e-6, p.getLongitudeE6() * 1e-6, 1);
       Address address = (addresses != null && addresses.size() > 0) ? addresses.get(0) : null;
       StringBuffer result = new StringBuffer();
-      if(address != null) {
-        result.append(address.getAddressLine(0) != null ? address.getAddressLine(0) : "");
+      if (address != null) {
+        /**
+        result.append(address.getThoroughfare() != null ? address.getThoroughfare() : "");
         result.append(", ");
-        result.append(address.getAddressLine(1) != null ? address.getAddressLine(1) : address.getLocality());
+        **/
+        result.append(address.getLocality() != null ? address.getLocality() : "");
+        result.append(", ");
+        result.append(address.getAdminArea());
+        result.append(" " + address.getPostalCode());
+
+        /**
+         * result.append(address.getAddressLine(0) != null ?
+         * address.getAddressLine(0) : ""); result.append(", ");
+         * result.append(address.getAddressLine(1) != null ?
+         * address.getAddressLine(1) : address.getLocality());
+         **/
       }
       location = result.toString();
     }

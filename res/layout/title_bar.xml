@@ -18,6 +18,7 @@
 	  	android:layout_height = "wrap_content" android:layout_weight = "1"
 	  	android:layout_width = "wrap_content" android:layout_gravity="center_vertical|center_horizontal">
 	  </ImageView>
+
 	  <ImageButton android:id="@+id/prefBtn"
 	  	android:src = "@drawable/cq_pref_btnx"
 	  	style="@style/TitlebarOuterButton"

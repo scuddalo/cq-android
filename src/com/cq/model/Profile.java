@@ -1,6 +1,7 @@
 package com.cq.model;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.cq.seek.R;
 import com.cq.sqlite.CacheDBAdapter.DBColumn;
@@ -74,6 +76,7 @@ public class Profile implements Base {
   }
 
   private static final long serialVersionUID = -8725890838055057779L;
+  private static final String Tag = "Profile";
   String cellCarrier;
   String cellNumber;
   Date createdAt;
@@ -374,8 +377,13 @@ public class Profile implements Base {
     // first, make sure that the profile doesn't have photo attached to it.
     photo = getPhoto();
     if (photo == null && getPhotoFileName() != null) {
-      // second make sure the device doesn't have this photo file
-      photo = BitmapFactory.decodeFile("/data/data/com.cq/files/" + getProfileIdNameString() + "." + photoFileExtension());
+      try {
+	      // second make sure the device doesn't have this photo file
+	      photo = BitmapFactory.decodeFile("/data/data/com.cq/files/" + getProfileIdNameString() + "." + photoFileExtension());
+      } catch (Exception ex) {
+        Log.i(Tag, "exception while tryint to look for photo in device");
+      }
+      
       if (photo == null && context != null) {
         // third, download the file
         String fileUrl = context.getString(R.string.server_url) + getPhotoFileUrl();
@@ -391,7 +399,7 @@ public class Profile implements Base {
       photo = BitmapFactory.decodeFile("/data/data/com.cq/files/default_photo.jpg");
     }
 
-    if(height != -1 && width != -1) {
+    if(height != -1 && width != -1 && photo != null) {
       photo = ImageTool.resize(photo, height, width);
     }
     return photo;

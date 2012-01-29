@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cq.model.Message;
@@ -18,6 +19,7 @@ import com.cq.model.SeekRequest;
 import com.cq.seek.R;
 
 public class MessagesListAdapter extends ArrayAdapter<SeekRequest>  {
+  public static final String TAG = "MessagesListAdapter";
   ArrayList<SeekRequest> seekRequests;
   Context context;
 
@@ -39,6 +41,8 @@ public class MessagesListAdapter extends ArrayAdapter<SeekRequest>  {
       holder.messagePreviewText = (TextView) convertView.findViewById(R.id.messages_row_preview_txt);
       holder.messageFromText = (TextView) convertView.findViewById(R.id.message_row_from_txt);
       holder.expandBtn = (ImageButton) convertView.findViewById(R.id.messages_row_expand_btn);
+      holder.unreadDot = (ImageView) convertView.findViewById(R.id.unread_red_dot);
+      holder.acceptedImg  = (ImageView) convertView.findViewById(R.id.cq_accepted_img);
 
       convertView.setTag(holder);
     }
@@ -47,6 +51,7 @@ public class MessagesListAdapter extends ArrayAdapter<SeekRequest>  {
     }
 
     SeekRequest seekRequest = seekRequests.get(position);
+    
     if (seekRequest != null && seekRequest.getSeek() != null) {
       Seek seek = seekRequest.getSeek();
       final Profile seekOwner = seek.getOwner();
@@ -55,12 +60,33 @@ public class MessagesListAdapter extends ArrayAdapter<SeekRequest>  {
         // first, name and photo...
         holder.messageFromText.setText(seekOwner.displayNameOrLogin());
         BitmapDrawable drawable = new BitmapDrawable(seekOwner.getPhotoLongVersion(context, 30, 30));
-        holder.messageFromText.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+        holder.messageFromText.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
 
         // third message ...
         Message seekMsg = null;
-        if ((seekMsg = seek.getMessage()) != null) {
+        if ((seekMsg = seekRequest.getMessage()) != null) {
           holder.messagePreviewText.setText(seekMsg.getContent());
+          
+          // display read status of seekMsg 
+          // make sure at any point in time, only of the
+          // accepted / unread img is shown
+          if (!seekMsg.isRead()) {
+            holder.unreadDot.setVisibility(View.VISIBLE);
+          }
+          else {
+            holder.unreadDot.setVisibility(View.INVISIBLE);
+          }
+          
+          //display if seekmsg is accepted or not
+          if(seekRequest.getAccepted()) {
+            holder.acceptedImg.setVisibility(View.VISIBLE);
+            //set the unreadDot to Gone to save real estate
+            holder.unreadDot.setVisibility(View.GONE);
+          }
+          else {
+              // we set it to gone to save the real estate
+              holder.acceptedImg.setVisibility(View.GONE);
+           }
         }
 
         holder.expandBtn.setOnClickListener(new View.OnClickListener()
@@ -105,6 +131,7 @@ public class MessagesListAdapter extends ArrayAdapter<SeekRequest>  {
 
   class ViewHolder {
     public ImageButton expandBtn;
+    public ImageView unreadDot, acceptedImg;
     public TextView messagePreviewText, messageFromText;
   }
 

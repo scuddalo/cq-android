@@ -11,11 +11,12 @@
      	android:layout_height="fill_parent"
      	android:enabled="true" 
      	android:clickable="true" 
-     	android:apiKey="09fCY1ADkhzEmQI4FNmtBA4lm3CRq0YwTiWaWLw" 
+     	android:apiKey="09fCY1ADkhzGLDubTbew-EQagdw0FEC2JwWEJRQ" 
+     					
      					
      	/>
-     		
-    
+<!--  map api key for cq-alpha.keystore cert => 09fCY1ADkhzGLDubTbew-EQagdw0FEC2JwWEJRQ -->
+    <!--  map api key for debug.keystore cert => 09fCY1ADkhzEIKsx_4K7XpQRwFhdyBbgjnOBmHw -->
 	<include layout="@layout/title_bar" 
 		android:layout_alignParentTop="true" 
 		android:layout_width="fill_parent" 
@@ -86,7 +87,7 @@
 			        android:layout_alignParentBottom="true"
 			        android:text="Alameda, CA"
 			        android:textAppearance = "@style/DisplayText" 
-			        android:layout_height="20dp" android:layout_marginLeft="5dp"/>
+			        android:layout_height="20dp" android:layout_marginLeft="5dp" android:textSize="10dp"/>
 		     	
 		</RelativeLayout>
 		

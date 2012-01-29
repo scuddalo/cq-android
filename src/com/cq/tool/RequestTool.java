@@ -111,8 +111,10 @@ public class RequestTool {
 
       // 3) setup the http req params
       List<NameValuePair> reqParams = new ArrayList<NameValuePair>();
-      for(Entry<String, String> entry : params.entrySet()) {
-        reqParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+      if (params != null) {
+        for(Entry<String, String> entry : params.entrySet()) {
+          reqParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+        }
       }
       method.setEntity(new UrlEncodedFormEntity(reqParams, HTTP.UTF_8));
 

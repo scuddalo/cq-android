@@ -65,9 +65,8 @@
 			android:layout_weight = "0.5"
 		/>
 		<ImageButton android:id="@+id/message_reject_btn"
-			android:src = "@drawable/cq_cancel_btnx"
 			style = "@style/CQImageOnlyButton"
-		/>
+		android:src="@drawable/cq_reject_btnx"/>
 	</LinearLayout> 
 
     <include android:layout_alignParentBottom="true" android:layout_width="fill_parent" 

@@ -8,28 +8,34 @@
 		<include layout="@layout/title_bar"
 		android:layout_alignParentTop="true" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
-	  
-	<TextView 
-		android:text="Active Seek " 
-		android:id="@+id/ManageSeek_Header" 
-		android:layout_width="fill_parent" 
+	 
+	<LinearLayout 
+		android:id="@+id/ManageSeek_HeaderLayout"
 		android:layout_height="wrap_content"
 		android:layout_below = "@+id/title_bar"
-        android:textColor="#ffffff" 
-        android:textStyle="bold"
-        android:paddingLeft = "5dp"
-        android:layout_marginTop = "5dp"
-        android:layout_marginBottom = "5dp"
-        android:textSize="12dp">
-	</TextView>
+	android:layout_width="fill_parent">
 	
+		<TextView 
+			android:text="Active Seek " 
+			android:id="@+id/ManageSeek_Header" 
+			android:layout_gravity= "left|center_vertical"	
+	        android:textColor="#ffffff" 
+	        android:textStyle="bold"
+	        android:textSize="12dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.9">
+		</TextView>
+		
+		  <ImageButton android:id="@+id/newSeekBtn"
+				android:src="@drawable/cq_seek_circle_btnx" 
+				style="@style/TitlebarOuterButton" android:layout_gravity="right|center_vertical" android:layout_weight="0.1">
+	      </ImageButton>
+	</LinearLayout>
 	
 	<LinearLayout android:id="@+id/ManageSeek_MesssageBodyContainer"
 		android:layout_width = "fill_parent"
 		android:layout_height = "wrap_content"
 		android:background = "@drawable/cq_box_bg_full9"
 		android:gravity = "left"
-		android:layout_below = "@+id/ManageSeek_Header"
+		android:layout_below = "@+id/ManageSeek_HeaderLayout"
 		android:orientation = "vertical"
 		android:isScrollContainer="true"
 		android:padding="20dp" android:scrollbarSize="1dp" android:scrollbars="vertical">
